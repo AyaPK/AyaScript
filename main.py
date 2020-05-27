@@ -8,15 +8,15 @@ funcs = {
     },
 
     "word1": {
-        "cool"
+        "cool","neat","weird"
     },
 
     "word2": {
-        "program"
+        "program", "application", "cake"
     },
 
     "noun": {
-        "cat","dog","fish","mouse"
+        "cat","dog","fish","mouse","pet","house"
     },
 
     "adjective": {
