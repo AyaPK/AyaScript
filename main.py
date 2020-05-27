@@ -1,26 +1,29 @@
-import ayascript
+from ayascript import ayascript
 
 funcs = {
 
-    "output": [
-        "#verb.cap# #noun.a# my ass!\n\n(I will not #verb# #noun.a#.)",
-        "I will never #verb# #noun.a#, and you can't make me!",
-        "#verb.cap# #noun2.a#? In THIS economy!?",
-        "I will not #verb# #noun2.a#. Ever."
-    ],
+    "output": {
+        "#word1.cap# #word2#, Aya!",
+        "It's #adjective.a# #noun#"
+    },
 
-    "verb": [
-        "run"
-    ],
+    "word1": {
+        "cool"
+    },
 
-    "noun": [
-        "lawyer"
-    ],
+    "word2": {
+        "program"
+    },
 
-    "noun2": [
-        "cat"
-    ]
+    "noun": {
+        "cat","dog","fish","mouse"
+    },
+
+    "adjective": {
+        "quiet","big","small","red","blue","awesome","angry","empty"
+    }
+
 }
 
-output = ayascript.ayascript(funcs)
+output = ayascript(funcs)
 print(output)

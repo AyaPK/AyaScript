@@ -1,34 +1,16 @@
 import ayarandom
+import ayagrammar
 
-def pastTense(word):
-    return
-
-def anA(word):
-    if word[0].lower() in "aeio":
-        return "an "+word
-    else:
-        return "a "+word
-
-def ing(word):
-    if word[-1] in "dgnpm" and word[-2] in "aeiou":
-        if word[-3] in "aeiou":
-            return word + "ing"
-        else:
-            return word + word[-1] + "ing"
-    elif word[-1] == "e":
-        return word[0:-1] + "ing"
-    else:
-        return word + "ing"
 
 def addModifier(word, mod):
     if mod == "a":
-        return anA(word)
+        return ayagrammar.anA(word)
     if mod == "cap":
         return word.capitalize()
     if mod == "ed":
-        return pastTense(word)
+        return ayagrammar.pastTense(word)
     if mod == "ing":
-        return ing(word)
+        return ayagrammar.ing(word)
 
 
 def getRandomItem(node, input):
@@ -44,6 +26,7 @@ def getRandomItem(node, input):
             raise Exception("Node error - node \"" + node + "\" not found")
         opts = [x for x in input[word]]
         return addModifier(ayarandom.choice(opts), modifier)
+
 
 def ayascript(input):
     if "output" not in input:
