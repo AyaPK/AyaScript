@@ -8,11 +8,11 @@ funcs = {
     },
 
     "word1": {
-        "cool","neat","weird"
+        "cool","neat","weird","interesting"
     },
 
     "word2": {
-        "program", "application", "cake"
+        "program", "application", "cake", "code"
     },
 
     "noun": {
