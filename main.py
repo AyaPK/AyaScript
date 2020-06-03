@@ -1,4 +1,4 @@
-from ayascript import ayascript
+import ayascript
 
 nodes = {
     # the output key will be where you can create sentence structures to be created
@@ -29,5 +29,12 @@ nodes = {
 }
 
 # call the ayascript function and pass in your nodes dictionary to generate a sentence
-output = ayascript(nodes)
+output = ayascript.ayascript(nodes)
 print(output)
+
+# Built in Random Number Generation
+print(ayascript.randomDigit(20, 50))
+print(ayascript.randomChoice(["Choose", "From", "A", "List", "Of", "Items"]))
+
+# Brainfuck transpiler made for fun
+ayascript.brainfuck("++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.")

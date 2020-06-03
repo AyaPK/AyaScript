@@ -1,6 +1,11 @@
-def pastTense(word):
-    return
+import json
 
+def pastTense(word):
+    with open("irregVerbs.json", "r") as f:
+        irregulars = json.load(f)
+    if word in irregulars:
+        return irregulars[word]
+    return
 
 def anA(word):
     if word[0].lower() in "aeio":

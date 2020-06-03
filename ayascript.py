@@ -1,5 +1,11 @@
 import ayarandom
 import ayagrammar
+import ayaBrainFuck
+
+def randomDigit(lowest, highest):
+    return ayarandom.number(lowest, highest)
+def randomChoice(list):
+    return ayarandom.choice(list)
 
 
 def addModifier(word, mod):
@@ -7,6 +13,8 @@ def addModifier(word, mod):
         return ayagrammar.anA(word)
     if mod == "cap":
         return word.capitalize()
+    if mod == "low":
+        return word.lower()
     if mod == "ed":
         return ayagrammar.pastTense(word)
     if mod == "ing":
@@ -45,7 +53,6 @@ def ayascript(input):
             foundhash = not foundhash
             if not foundhash:
                 hashedword += "#"
-
                 hashedword = getRandomItem(hashedword.replace("#", ""), input)
 
             output += hashedword
@@ -54,3 +61,6 @@ def ayascript(input):
             hashedword += letter
 
     return output
+
+def brainfuck(input):
+    return ayaBrainFuck.brainfuck_transpiler(input)
