@@ -36,7 +36,7 @@ def brainfuck_transpiler(source_code):
     source_code = removeDeadCommand(source_code)
     inif = 0
     if source_code.count("[") != source_code.count("]"):
-        return "Error!"
+        raise Exception("Unexpected EOF while parsing. Loop not closed.")
     while True:
         if pointer == len(source_code):
             break
@@ -92,14 +92,14 @@ def brainfuck_transpiler(source_code):
         elif source_code[pointer] == "[":
             inif += 1
             if "]" not in source_code[pointer:]:
-                return "Error!"
+                raise Exception("Unexpected EOF while parsing. Loop not closed.")
             output = output+(" ")*indent+"while memory[p] > 0:\n"
             indent += 4
             pointer += 1
 
         elif source_code[pointer] == "]":
             if inif == 0:
-                return "Error!"
+                raise Exception("Syntax error, attempting to close non existent loop.")
             indent -= 4
             pointer += 1
             inif -= 1

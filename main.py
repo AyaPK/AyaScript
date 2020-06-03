@@ -37,4 +37,10 @@ print(ayascript.randomDigit(20, 50))
 print(ayascript.randomChoice(["Choose", "From", "A", "List", "Of", "Items"]))
 
 # Brainfuck transpiler made for fun
+
+# Brainfuck to print the number 69
+ayascript.brainfuck("++++>+++++++++++[<++++>-]<++++++.+++.")
+
+# Larger brainfuck program
 ayascript.brainfuck("++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.")
+
