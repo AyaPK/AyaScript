@@ -13,10 +13,10 @@ def removeDeadCommand(inp):
     return inp
 
 def plus(count):
-    return f"memory[p] += {count}\n"
+    return f"m[p] += {count}\n"
 
 def min(count):
-    return f"memory[p] -= {count}\n"
+    return f"m[p] -= {count}\n"
 
 def yplus(count):
     return f"p += {count}\n"
@@ -25,11 +25,11 @@ def ymin(count):
     return f"p -= {count}\n"
 
 def brainfuck_transpiler(source_code):
-    output = "memory = [0]*30000\n" \
+    prepend = "m = [0]*30000\n" \
              "p = 0\n" \
              "output = \"\"\n" \
              ""
-
+    output = ""
 
     indent = 0
     pointer = 0
@@ -82,18 +82,18 @@ def brainfuck_transpiler(source_code):
             output = output+(" ")*indent+ymin(mincounter)
 
         elif source_code[pointer] == ".":
-            output = output+(" ")*indent+"output+=(chr(memory[p]))\n"
+            output = output+(" ")*indent+"output+=(chr(m[p]))\n"
             pointer += 1
 
         elif source_code[pointer] == ",":
-            output = output+(" ")*indent+"*p = getchar();\n"
+            output = output+(" ")*indent+"c = input(\"> \")\n"+(" ")*indent+"if c == \"-1\":\n"+(" ")*indent+"    m[p] = -1\n"+(" ")*indent+"else:\n"+(" ")*indent+"    m[p] = ord(c)\n"
             pointer += 1
 
         elif source_code[pointer] == "[":
             inif += 1
             if "]" not in source_code[pointer:]:
                 raise Exception("Unexpected EOF while parsing. Loop not closed.")
-            output = output+(" ")*indent+"while memory[p] > 0:\n"
+            output = output+(" ")*indent+"while m[p] > 0:\n"
             indent += 4
             pointer += 1
 
@@ -107,6 +107,7 @@ def brainfuck_transpiler(source_code):
         else:
             pointer += 1
 
-    exec(output+"print(output)")
+    exec(prepend+output+"print(output)")
 
     return output
+

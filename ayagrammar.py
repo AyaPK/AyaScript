@@ -5,7 +5,7 @@ def pastTense(word):
         irregulars = json.load(f)
     if word in irregulars:
         return irregulars[word]
-    return
+    return word+"ed"
 
 def anA(word):
     if word[0].lower() in "aeio":
@@ -24,3 +24,6 @@ def ing(word):
         return word[0:-1] + "ing"
     else:
         return word + "ing"
+
+def plural(word):
+    return word+"s"

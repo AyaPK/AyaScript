@@ -1,6 +1,7 @@
 import ayarandom
 import ayagrammar
 import ayaBrainFuck
+import rot13
 
 def randomDigit(lowest, highest):
     return ayarandom.number(lowest, highest)
@@ -19,6 +20,8 @@ def addModifier(word, mod):
         return ayagrammar.pastTense(word)
     if mod == "ing":
         return ayagrammar.ing(word)
+    if mod == "s":
+        return ayagrammar.plural(word)
 
 
 def getRandomItem(node, input):
@@ -64,3 +67,6 @@ def ayascript(input):
 
 def brainfuck(input):
     return ayaBrainFuck.brainfuck_transpiler(input)
+
+def encode():
+    ayaBrainFuck.brainfuck_transpiler(rot13.rot13)
