@@ -1,7 +1,5 @@
-import ayarandom
-import ayagrammar
-import ayaBrainFuck
-import rot13
+from ayascript import ayarandom, ayaBrainFuck, ayagrammar
+
 
 def randomDigit(lowest, highest):
     return ayarandom.number(lowest, highest)
@@ -39,7 +37,7 @@ def getRandomItem(node, input):
         return addModifier(ayarandom.choice(opts), modifier)
 
 
-def ayascript(input):
+def ayagen(input):
     if "output" not in input:
         raise Exception("Input error - origin not found")
     opts = [x for x in input["output"]]
