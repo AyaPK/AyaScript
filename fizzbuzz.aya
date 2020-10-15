@@ -3,13 +3,18 @@ buzz -> 5
 x -> 0
 for 100 loops
 
-if x%fizz is 0 and x%buzz is 0
+// comment!!
+
+if x % fizz is 0 and x % buzz is 0
 show "fizzbuzz"
 end
 else if x%fizz is 0
 show "fizz"
 end
 else if x%buzz is 0
+
+// Another comment!
+
 show "buzz"
 end
 else

@@ -76,7 +76,9 @@ def pseudocode(filePath):
         lines = file.readlines()
     variables = {}
     for line in lines:
-        if "->" in line:
+        if "//" in line.split(" ")[0]:
+            continue
+        elif "->" in line:
             newline = line.replace("->", "=")
             execute += "\t"*indentLevel + f"{newline}"
         elif line.split(" ")[0].lower() == "show":
