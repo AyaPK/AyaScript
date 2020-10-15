@@ -1,0 +1,21 @@
+fizz -> 3
+buzz -> 5
+x -> 0
+for 100 loops
+
+if x%fizz is 0 and x%buzz is 0
+show "fizzbuzz"
+end
+elif x%fizz is 0
+show "fizz"
+end
+elif x%buzz is 0
+show "buzz"
+end
+else
+show x
+end
+
+x -> x+1
+
+end

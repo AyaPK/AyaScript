@@ -66,5 +66,39 @@ def ayagen(input):
 def brainfuck(input):
     return ayaBrainFuck.brainfuck_transpiler(input)
 
-def encode():
-    ayaBrainFuck.brainfuck_transpiler(rot13.rot13)
+
+def pseudocode(filePath):
+    debug = False
+    indentLevel = 0
+    operators = "+-/*"
+    execute = ""
+    with open(filePath, "r") as file:
+        lines = file.readlines()
+    variables = {}
+    for line in lines:
+        if "->" in line:
+            newline = line.replace("->", "=")
+            execute += "\t"*indentLevel + f"{newline}"
+        elif line.split(" ")[0].lower() == "show":
+            execute += "\t"*indentLevel + f"print({line.replace('show', '').strip()})\n"
+        elif line.split(" ")[0] == "for":
+            loopcount = line.split(" ")[1]
+            execute += "\t"*indentLevel + f"for __loopcounter__ in range({loopcount}):\n"
+            indentLevel += 1
+        elif line.split(" ")[0] == "end\n":
+            indentLevel -= 1
+        elif line.split(" ")[0] == "if":
+            line = line.replace("is", "==").replace("\n", "")
+            execute += "\t" * indentLevel + line + ":" + "\n"
+            indentLevel += 1
+        elif line.split(" ")[0] == "elif":
+            line = line.replace("is", "==").replace("\n", "")
+            execute += "\t" * indentLevel + line + ":" + "\n"
+            indentLevel += 1
+        elif line.split(" ")[0] == "else\n":
+            line = line.replace("is", "==").replace("\n", "")
+            execute += "\t" * indentLevel + line + ":" + "\n"
+            indentLevel += 1
+    if debug:
+        print(execute)
+    exec(execute)
