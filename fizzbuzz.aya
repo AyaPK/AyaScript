@@ -6,10 +6,10 @@ for 100 loops
 if x%fizz is 0 and x%buzz is 0
 show "fizzbuzz"
 end
-elif x%fizz is 0
+else if x%fizz is 0
 show "fizz"
 end
-elif x%buzz is 0
+else if x%buzz is 0
 show "buzz"
 end
 else

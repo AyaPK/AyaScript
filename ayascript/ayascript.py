@@ -91,8 +91,8 @@ def pseudocode(filePath):
             line = line.replace("is", "==").replace("\n", "")
             execute += "\t" * indentLevel + line + ":" + "\n"
             indentLevel += 1
-        elif line.split(" ")[0] == "elif":
-            line = line.replace("is", "==").replace("\n", "")
+        elif line.split(" ")[0:2] == ["else", "if"]:
+            line = line.replace("is", "==").replace("\n", "").replace("else if", "elif")
             execute += "\t" * indentLevel + line + ":" + "\n"
             indentLevel += 1
         elif line.split(" ")[0] == "else\n":
@@ -101,4 +101,5 @@ def pseudocode(filePath):
             indentLevel += 1
     if debug:
         print(execute)
-    exec(execute)
+    else:
+        exec(execute)
